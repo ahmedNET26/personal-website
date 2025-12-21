@@ -407,6 +407,14 @@ a:hover{
     justify-content: center;
     gap: 5px;
 }
+.aboutname3{
+     color: #eee;
+    font-family:"Sekuya ,italic"  ;
+}
+.aboutTitle3{
+  color: #00abd5;
+        font-family:"Sekuya ,italic"  ;
+}
 .socialmedia{
     display: flex;
     align-items: center;
