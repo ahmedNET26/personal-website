@@ -1,46 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My_profile</title>
-    <link rel="stylesheet" href="profile.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ahmed | Aspiring Network Engineer</title>
+<meta name="description" content="Ahmed is an Information Technology student specializing in Computer Networks, passionate about routing, switching and network infrastructure.">
+<meta name="theme-color" content="#060d1f">
+<meta property="og:title" content="Ahmed | Aspiring Network Engineer">
+<meta property="og:description" content="IT student specializing in Computer Networks. Routing, switching and network infrastructure.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#060d1f;--surface:#0c1730;--surface2:#101d3b;--line:rgba(120,170,255,.14);--text:#eaf1ff;--muted:#9fb0cc;--blue:#2f7bff;--cyan:#22d3ee;--r:16px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Inter,Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+#net{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,header,footer{position:relative;z-index:1}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.02em;margin-bottom:10px}
+.eyebrow{color:var(--cyan);font:600 .8rem/1 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;display:block}
+.lead{color:var(--muted);max-width:620px;margin-bottom:40px}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(6,13,31,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:700;display:flex;align-items:center;gap:10px}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.links{display:flex;gap:6px;list-style:none;padding:0}
+.links a{padding:8px 14px;border-radius:999px;color:var(--muted);font-size:.92rem;transition:.25s}
+.links a:hover{color:var(--text)}
+.links a.active{color:var(--text);background:rgba(47,123,255,.18);box-shadow:inset 0 0 0 1px rgba(47,123,255,.4)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+/* hero */
+#home{min-height:100vh;display:flex;align-items:center;padding-top:110px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.tag{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:rgba(16,29,59,.6);padding:6px 14px;border-radius:999px;font-size:.82rem;color:var(--muted);margin-bottom:22px}
+.tag b{width:7px;height:7px;border-radius:50%;background:#34d399}
+h1{font-size:clamp(3rem,9vw,5.2rem);line-height:1;letter-spacing:-.04em}
+.role{font-size:clamp(1.2rem,3vw,1.7rem);margin:14px 0 20px;background:linear-gradient(90deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600}
+.hero p{color:var(--muted);max-width:520px;margin-bottom:32px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:12px;font-weight:600;border:1px solid var(--line);transition:transform .25s,box-shadow .25s,background .25s;display:inline-block}
+.btn.primary{background:linear-gradient(135deg,var(--blue),#1b5fe0);border-color:transparent;box-shadow:0 8px 24px -8px rgba(47,123,255,.7)}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary:hover{box-shadow:0 12px 30px -8px rgba(34,211,238,.6)}
+.btn.ghost:hover{background:rgba(47,123,255,.12)}
+.topo{width:100%;max-width:440px;justify-self:center}
+.topo .pkt{fill:var(--cyan)}
+/* cards */
+.card{background:linear-gradient(160deg,rgba(16,29,59,.75),rgba(12,23,48,.75));border:1px solid var(--line);border-radius:var(--r);padding:26px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .3s,border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.4);box-shadow:0 18px 40px -20px rgba(47,123,255,.55)}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
+.about p{color:var(--muted);margin-bottom:16px}
+.about p:first-child{color:var(--text)}
+.focus{list-style:none;padding:0;display:grid;gap:12px}
+.focus li{display:flex;gap:12px;color:var(--muted);font-size:.95rem}
+.focus li:before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:2px;background:var(--cyan);transform:rotate(45deg)}
+.card h3{font-size:1.05rem;margin-bottom:14px;display:flex;gap:10px;align-items:center}
+.ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(47,123,255,.15);color:var(--cyan);font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.84rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(6,13,31,.5);color:var(--muted);transition:.2s;cursor:default}
+.chip:hover{color:var(--text);border-color:var(--cyan);background:rgba(34,211,238,.08)}
+.note{margin-top:22px;color:var(--muted);font-size:.9rem}
+/* projects */
+.proj{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.thumb{aspect-ratio:16/9;background:radial-gradient(circle at 30% 20%,rgba(34,211,238,.18),transparent 60%),var(--surface2);display:grid;place-items:center;font-size:2.4rem;border-bottom:1px solid var(--line);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.proj:hover .thumb img{transform:scale(1.04)}
+.pbody{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.cat{color:var(--cyan);font:600 .72rem/1 ui-monospace,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.pbody p{color:var(--muted);font-size:.94rem;flex:1}
+.plinks{display:flex;gap:10px;flex-wrap:wrap}
+.plinks a{font-size:.85rem;padding:7px 14px;border-radius:10px;border:1px solid var(--line);transition:.2s}
+.plinks a:hover{border-color:var(--cyan);color:var(--cyan)}
+.plinks span{font-size:.82rem;color:var(--muted);opacity:.7}
+/* certs */
+.cert .ic{margin-bottom:14px}
+.cert h3{margin-bottom:6px}
+.cert p{color:var(--muted);font-size:.9rem}
+.goal{margin-top:36px;border-style:dashed;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.goal .badge{font-size:.72rem;padding:5px 10px;border-radius:999px;background:rgba(34,211,238,.12);color:var(--cyan);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+/* contact */
+.contact{text-align:center;max-width:680px;margin:0 auto}
+.contact .lead{margin-inline:auto}
+.cgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:10px}
+.cgrid a,.cgrid div{display:block;padding:20px;text-align:center}
+.cgrid small{display:block;color:var(--muted);font-size:.8rem;margin-top:4px}
+.off{opacity:.55}
+footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:.88rem}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(max-width:820px){
+ .burger{display:block}
+ .links{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:rgba(6,13,31,.97);padding:12px 24px 20px;border-bottom:1px solid var(--line);display:none}
+ .links.open{display:flex}
+ .hero,.about{grid-template-columns:1fr}
+ .topo{max-width:320px;order:-1}
+ section{padding:72px 0}
+ #home{padding-top:100px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *{animation:none!important;transition:none!important}
+ .rv{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
-    <header>
-      <img src="photos/apple-svgrepo-com.svg" width="100px" alt="logo">
-      <nav class="navi">
-        <ul>
-            <li><a href="about_me.html">About me</a></li>
-            <li><a href="my_wrkees.html">My workes</a></li>
-            <li><a href="contact.html">Contact Me</a></li>
-        </ul>
-      </nav>
-    </header>
-    <hr>
-  
-   <section class="hero">
-    <div class="spinner">
-      <div class="spinner1">
-      </div>
-    </div>
-    <img class="logo2" src="photos/css3-svgrepo-com.svg"  alt="logo2" width="150px">
-    <div class="herosub">
-      <h1 class="name">I'm Ahmed</h1>
-      <h1 class="title">Network Administrator</h1>
-    </div>
-    
-      <a class="hireMe" href="hire.html">Hire_me</a>
-      
+<canvas id="net" aria-hidden="true"></canvas>
 
-    
-    <img src="photos/sticker.webp" alt="hero image " class="heroImg" width="150px"/>
+<nav aria-label="Main navigation">
+ <div class="wrap">
+  <a href="#home" class="brand"><i></i>Ahmed</a>
+  <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="links">☰</button>
+  <ul class="links" id="links">
+   <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li>
+   <li><a href="#projects">Projects</a></li><li><a href="#certificates">Certificates</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+ </div>
+</nav>
 
+<main>
+<section id="home"><div class="wrap hero">
+ <div>
+  <span class="tag"><b></b> IT Student · Computer Networks</span>
+  <h1>Ahmed</h1>
+  <div class="role">Aspiring Network Engineer</div>
+  <p>Passionate about computer networks, routing, switching, and building reliable network infrastructures. Continuously learning and developing my technical skills to become a professional Network Engineer.</p>
+  <div class="btns"><a class="btn primary" href="#projects">View Projects</a><a class="btn ghost" href="#contact">Contact Me</a></div>
+ </div>
+ <svg class="topo" viewBox="0 0 400 360" role="img" aria-label="Network topology illustration: a router connected to switches and end devices">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#2f7bff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+  <g stroke="url(#g)" stroke-width="1.6" fill="none" opacity=".7">
+   <path id="p1" d="M200 70 L90 180"/><path id="p2" d="M200 70 L310 180"/>
+   <path d="M90 180 L40 290"/><path d="M90 180 L140 290"/><path id="p3" d="M310 180 L260 290"/><path d="M310 180 L360 290"/>
+  </g>
+  <g fill="var(--surface2)" stroke="url(#g)" stroke-width="2">
+   <circle cx="200" cy="70" r="30"/>
+   <rect x="64" y="160" width="52" height="40" rx="8"/><rect x="284" y="160" width="52" height="40" rx="8"/>
+   <rect x="26" y="276" width="28" height="28" rx="6"/><rect x="126" y="276" width="28" height="28" rx="6"/>
+   <rect x="246" y="276" width="28" height="28" rx="6"/><rect x="346" y="276" width="28" height="28" rx="6"/>
+  </g>
+  <g fill="none" stroke="#eaf1ff" stroke-width="1.8" stroke-linecap="round"><path d="M188 70h24M200 58v24M192 62l16 16M208 62l-16 16" opacity=".85"/><path d="M76 174h28M76 186h28"/><path d="M296 174h28M296 186h28"/></g>
+  <g class="pkt"><circle r="4"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+  <circle r="4"><animateMotion dur="3.6s" repeatCount="indefinite" begin="1s"><mpath href="#p2"/></animateMotion></circle>
+  <circle r="4"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2s"><mpath href="#p3"/></animateMotion></circle></g>
+  <text x="200" y="125" text-anchor="middle" fill="#9fb0cc" font-size="12" font-family="monospace">ROUTER</text>
+ </svg>
+</div></section>
 
-   </section>
-   <hr>
-  <footer>
-    <p>Bult by Administrator Ahmed </p>
-  </footer>   
+<section id="about"><div class="wrap">
+ <span class="eyebrow rv">About Me</span><h2 class="rv">Learning how networks really work</h2>
+ <div class="about rv" style="margin-top:32px">
+  <div>
+   <p>I'm Ahmed, an Information Technology student specializing in Computer Networks. I'm drawn to the systems that quietly connect everything, and I enjoy understanding how network infrastructures operate from the ground up.</p>
+   <p>Routing and switching are where my curiosity is strongest. I'm working toward a career as a Network Engineer, and I'm building that foundation step by step through coursework, hands-on labs, and personal projects.</p>
+   <p>Alongside networking, I enjoy technology and programming, which help me think about problems more broadly. I'm committed to continuous learning and professional development.</p>
+  </div>
+  <div class="card"><h3>Areas of interest</h3>
+   <ul class="focus"><li>Computer Networking</li><li>Routing and Switching</li><li>Network Administration &amp; Engineering</li><li>Network Infrastructure</li><li>IT, Programming &amp; Software Development</li></ul></div>
+ </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+ <span class="eyebrow rv">Technical Skills</span><h2 class="rv">Technologies I'm learning and developing</h2>
+ <p class="lead rv">Areas I'm actively studying and practicing as I grow.</p>
+ <div class="grid" id="skillGrid"></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+ <span class="eyebrow rv">Projects</span><h2 class="rv">Things I've built</h2>
+ <p class="lead rv">A selection of my work in networking, programming, and design.</p>
+ <div class="grid" id="projGrid"></div>
+</div></section>
+
+<section id="certificates"><div class="wrap">
+ <span class="eyebrow rv">Certificates</span><h2 class="rv">Earned certificates</h2>
+ <div class="grid" id="certGrid" style="margin-top:32px"></div>
+ <div class="card goal rv"><span class="badge">Currently working toward</span><div id="goalList"></div></div>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+ <span class="eyebrow rv">Contact</span><h2 class="rv">Let's connect</h2>
+ <p class="lead rv">I'm always happy to talk about networking, technology, and learning opportunities. Feel free to reach out and connect with me.</p>
+ <div class="cgrid" id="contactGrid"></div>
+</div></section>
+</main>
+
+<footer>© <span id="yr"></span> Ahmed · Aspiring Network Engineer</footer>
+
+<script>
+/* ============ EDIT YOUR CONTENT HERE ============ */
+const CONFIG = {
+  contact: {
+    email: "elf26ahmed@gmail.com",
+    linkedin: "https://www.linkedin.com/in/ahmed-elfagieh-763210426",
+    github: "https://github.com/ahmedNET26"
+  },
+  skills: [
+    {icon:"🌐", title:"Networking", items:["Computer Networking","Routing","Switching","IP Addressing","Subnetting","Cisco Packet Tracer","Network Administration"]},
+    {icon:"💻", title:"Programming", items:["C++","Object-Oriented Programming (OOP)","Python"]},
+    {icon:"🗄️", title:"Databases", items:["SQL","Database Fundamentals"]},
+    {icon:"🎨", title:"Design", items:["UI/UX Design","Figma"]}
+  ],
+  /* Add a project by copying one block. Cards with no title are hidden.
+     image: path like "images/netfix.png" (leave "" to show a placeholder icon)
+     github / demo: leave "" if not available */
+  projects: [
+    {title:"NetFix", category:"Networking / UI/UX Design", icon:"📡",
+     description:"A networking application concept designed to help users diagnose internet connectivity problems, identify issues, and monitor their network.",
+     tech:["Figma"], image:"", github:"", demo:""},
+    {title:"Snake Game", category:"Programming", icon:"🐍",
+     description:"A classic Snake Game developed using Python.",
+     tech:["Python"], image:"", github:"", demo:""},
+    {title:"Banking System", category:"Software Development", icon:"🏦",
+     description:"A banking system developed using C++ and Object-Oriented Programming.",
+     tech:["C++","OOP"], image:"", github:"", demo:""}
+  ],
+  /* Only add certificates you have actually earned */
+  certificates: [
+    {title:"Business Administration Certificate", icon:"📘"},
+    {title:"UI/UX Design Certificate", icon:"🎓"}
+  ],
+  goals: ["CCNA"]
+};
+/* ================================================= */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u) ? esc(u) : "";
+
+$("#skillGrid").innerHTML = CONFIG.skills.map(s =>
+  `<div class="card rv"><h3><span class="ic">${s.icon}</span>${esc(s.title)}</h3><div class="chips">${s.items.map(i=>`<span class="chip">${esc(i)}</span>`).join("")}</div></div>`).join("") 
+  ;
+$("#skillGrid").insertAdjacentHTML("afterend",'<p class="note rv">These are technologies and areas I am learning and developing.</p>');
+
+$("#projGrid").innerHTML = CONFIG.projects.filter(p => p.title && p.description).map(p => {
+  const gh = safeUrl(p.github), dm = safeUrl(p.demo);
+  const media = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy">` : esc(p.icon || "📁");
+  const links = (gh ? `<a href="${gh}" target="_blank" rel="noopener">GitHub</a>` : "") + (dm ? `<a href="${dm}" target="_blank" rel="noopener">Live Demo</a>` : "");
+  return `<article class="card proj rv"><div class="thumb">${media}</div><div class="pbody"><span class="cat">${esc(p.category)}</span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><div class="chips">${(p.tech||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div><div class="plinks">${links || "<span>Links coming soon</span>"}</div></div></article>`;
+}).join("");
+
+$("#certGrid").innerHTML = CONFIG.certificates.filter(c => c.title).map(c =>
+  `<div class="card cert rv"><div class="ic">${c.icon||"🎓"}</div><h3>${esc(c.title)}</h3></div>`).join("");
+if (CONFIG.goals.length) $("#goalList").innerHTML = CONFIG.goals.map(g => `<span class="chip">${esc(g)}</span>`).join(" ");
+else $(".goal").remove();
+
+const c = CONFIG.contact;
+const items = [
+  ["✉️","Email", c.email && /^[^@\s]+@[^@\s]+$/.test(c.email) ? "mailto:"+esc(c.email) : ""],
+  ["in","LinkedIn", safeUrl(c.linkedin)],
+  ["⌥","GitHub", safeUrl(c.github)]
+];
+$("#contactGrid").innerHTML = items.map(([i,l,h]) => h
+  ? `<a class="card rv" href="${h}" ${h.startsWith("mailto")?"":'target="_blank" rel="noopener"'}><div class="ic" style="margin:0 auto 10px">${i}</div>${l}</a>`
+  : `<div class="card off rv"><div class="ic" style="margin:0 auto 10px">${i}</div>${l}<small>Coming soon</small></div>`).join("");
+
+$("#yr").textContent = new Date().getFullYear();
+
+/* mobile menu */
+const burger = $("#burger"), links = $("#links");
+burger.onclick = () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", o); };
+links.addEventListener("click", e => { if (e.target.tagName === "A") { links.classList.remove("open"); burger.setAttribute("aria-expanded", false); } });
+
+/* scroll reveal + active section */
+const rvs = document.querySelectorAll(".rv");
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+rvs.forEach(el => io.observe(el));
+const navA = [...links.querySelectorAll("a")];
+const so = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) navA.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+}), {rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main section").forEach(s => so.observe(s));
+
+/* network canvas background */
+(() => {
+  const cv = $("#net"), ctx = cv.getContext("2d");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let w, h, pts = [], raf;
+  function init() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    w = innerWidth; h = innerHeight;
+    cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n = Math.min(60, Math.floor(w * h / 22000));
+    pts = Array.from({length:n}, () => ({x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25}));
+  }
+  function draw() {
+    ctx.clearRect(0,0,w,h);
+    for (const p of pts) {
+      if (!reduce) { p.x += p.vx; p.y += p.vy; if (p.x<0||p.x>w) p.vx*=-1; if (p.y<0||p.y>h) p.vy*=-1; }
+    }
+    for (let i=0;i<pts.length;i++) for (let j=i+1;j<pts.length;j++) {
+      const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=dx*dx+dy*dy;
+      if (d<18000) { ctx.strokeStyle=`rgba(47,123,255,${.22*(1-d/18000)})`; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); }
+    }
+    ctx.fillStyle="rgba(34,211,238,.6)";
+    for (const p of pts) { ctx.beginPath(); ctx.arc(p.x,p.y,1.8,0,6.283); ctx.fill(); }
+    if (!reduce && !document.hidden) raf = requestAnimationFrame(draw);
+  }
+  addEventListener("resize", () => { cancelAnimationFrame(raf); init(); draw(); });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && !reduce) { cancelAnimationFrame(raf); draw(); } });
+  init(); draw();
+})();
+</script>
 </body>
 </html>
